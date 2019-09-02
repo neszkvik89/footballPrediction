@@ -9,13 +9,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Match {
+public class MatchResponse {
 
-  private int id;
-  private String status;
-  private int attendance;
-  private String venue;
-  private Team homeTeam;
-  private Team awayTeam;
-
+  private Match[] matches;
 }

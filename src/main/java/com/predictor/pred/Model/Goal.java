@@ -9,13 +9,10 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Match {
+public class Goal {
 
-  private int id;
-  private String status;
-  private int attendance;
-  private String venue;
-  private Team homeTeam;
-  private Team awayTeam;
-
+  private int minute;
+  private Team team;
+  private Player scorer;
+  private Player assist;
 }

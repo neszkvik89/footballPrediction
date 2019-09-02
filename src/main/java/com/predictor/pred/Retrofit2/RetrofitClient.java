@@ -1,5 +1,7 @@
 package com.predictor.pred.Retrofit2;
 
+import com.predictor.pred.Model.Match;
+import com.predictor.pred.Model.MatchResponse;
 import com.predictor.pred.Model.Player;
 import com.predictor.pred.Model.Standings;
 import com.predictor.pred.Model.StandingsResponse;
@@ -22,6 +24,10 @@ public interface RetrofitClient {
   @Headers("X-Auth-Token: fdd07844c7ac4b5a8f0011b1bca46fa5")
   @GET("competitions/{competitionId}/standings")
   Call<StandingsResponse> getLeagueStandings(@Path("competitionId") int competitionId);
+
+  @Headers("X-Auth-Token: fdd07844c7ac4b5a8f0011b1bca46fa5")
+  @GET("matches")
+  Call<MatchResponse> getTodaysMatches();
 
 
 
