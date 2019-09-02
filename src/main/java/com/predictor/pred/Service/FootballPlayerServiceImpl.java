@@ -20,7 +20,7 @@ public class FootballPlayerServiceImpl implements FootballPlayerService {
   @Override
   public void getPlayerName(int playerId) {
     retrofitClient = retrofitService.getRetrofitClient();
-    retrofitClient.getPlayerDetails()
+    retrofitClient.getPlayerDetails(playerId)
         .enqueue(new Callback<>() {
           @Override
           public void onResponse(Call<PlayerResponse> call, Response<PlayerResponse> response) {
