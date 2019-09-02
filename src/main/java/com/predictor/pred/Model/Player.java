@@ -10,14 +10,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class PlayerResponse {
+public class Player {
   private int id;
   private String name;
-  private String firstName;
-  private String lastName;
   private String dateOfBirth;
-  private String countryOfBirth;
   private String nationality;
   private String position;
-  private String lastUpdated;
 }

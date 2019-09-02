@@ -1,6 +1,6 @@
 package com.predictor.pred.Service;
 
-import com.predictor.pred.Model.Player;
+import com.predictor.pred.Model.Team;
 import com.predictor.pred.Retrofit2.RetrofitClient;
 import com.predictor.pred.Retrofit2.RetrofitService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 @Service
-public class FootballPlayerServiceImpl implements FootballPlayerService {
+public class TeamServiceImpl implements TeamService {
 
   private RetrofitClient retrofitClient;
 
@@ -18,19 +18,20 @@ public class FootballPlayerServiceImpl implements FootballPlayerService {
   RetrofitService retrofitService;
 
   @Override
-  public void getPlayerName(int playerId) {
+  public void getTeamName(int teamId) {
     retrofitClient = retrofitService.getRetrofitClient();
-    retrofitClient.getPlayerDetails(playerId)
+    retrofitClient.getTeamDetails(teamId)
         .enqueue(new Callback<>() {
           @Override
-          public void onResponse(Call<Player> call, Response<Player> response) {
+          public void onResponse(Call<Team> call, Response<Team> response) {
             System.out.println(response.body().getName());
           }
 
           @Override
-          public void onFailure(Call<Player> call, Throwable t) {
+          public void onFailure(Call<Team> call, Throwable t) {
             t.printStackTrace();
           }
         });
+
   }
 }
