@@ -1,6 +1,7 @@
 package com.predictor.pred.Controller;
 
 import com.predictor.pred.Service.FootballPlayerService;
+import com.predictor.pred.Service.LeagueService;
 import com.predictor.pred.Service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,14 +17,22 @@ public class MainController {
   @Autowired
   TeamService teamService;
 
+  @Autowired
+  LeagueService leagueService;
+
   @GetMapping("/player/{playerId}")
-  public void getPlayerNameById(@PathVariable (name = "playerId") int id) {
-    footballPlayerService.getPlayerName(id);
+  public void getPlayerNameById(@PathVariable (name = "playerId") int playerid) {
+    footballPlayerService.getPlayerName(playerid);
   }
 
   @GetMapping("/team/{teamId}")
-  public void getTeamNameById(@PathVariable (name = "teamId") int id) {
-    teamService.getTeamName(id);
+  public void getTeamNameById(@PathVariable (name = "teamId") int teamId) {
+    teamService.getTeamName(teamId);
+  }
+
+  @GetMapping("/standings/{leagueId}")
+  public void showStanding(@PathVariable (name = "leagueId") int leagueId) {
+    leagueService.getStandings(leagueId);
   }
 
 }
