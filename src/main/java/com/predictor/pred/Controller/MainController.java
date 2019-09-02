@@ -1,6 +1,6 @@
 package com.predictor.pred.Controller;
 
-import com.predictor.pred.Service.FootballTeamServiceImpl;
+import com.predictor.pred.Service.FootballPlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class MainController {
 
   @Autowired
-  FootballTeamServiceImpl footballTeamService;
+  FootballPlayerService footballPlayerService;
 
   @GetMapping("/")
   public void testConnection() {
-    footballTeamService.getTeamInfo(24);
+    footballPlayerService.getPlayerName(43);
   }
 }

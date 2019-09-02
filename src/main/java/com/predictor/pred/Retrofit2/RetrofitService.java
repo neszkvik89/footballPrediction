@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Service
 public class RetrofitService {
 
-  private static String apiUrl = "https://api-football-v1.p.rapidapi.com/v2/";
+  private static String apiUrl = "https://api.football-data.org/v2/";
 
   private Retrofit connectToFootballApi() {
     return new Retrofit

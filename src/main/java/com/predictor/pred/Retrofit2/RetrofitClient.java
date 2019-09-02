@@ -1,16 +1,14 @@
 package com.predictor.pred.Retrofit2;
 
-import com.predictor.pred.Model.FootballTeam;
+import com.predictor.pred.Model.PlayerResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
-import retrofit2.http.Path;
 
 public interface RetrofitClient {
 
-  @Headers("X-RapidAPI-Key: ac0cdd23f9msh74a94a30a2c9a99p154b40jsn9ec568a1c6e5")
-  @GET("teams/team/23")
-  Call<FootballTeam> getTeamDetails();
-
+  @Headers("X-Auth-Token: fdd07844c7ac4b5a8f0011b1bca46fa5")
+  @GET("players/43")
+  Call<PlayerResponse> getPlayerDetails();
 
 }
