@@ -9,15 +9,10 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Team {
+public class Coach {
 
   private int id;
   private String name;
-  private String website;
-  private int founded;
-  private String venue;
-  private Player[] squad;
-  private Player captain;
-  private Player[] lineUp;
-  private Player[] bench;
+  private String countryOfBirth;
+  private String nationality;
 }
