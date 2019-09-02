@@ -1,6 +1,6 @@
 package com.predictor.pred.Service;
 
-import com.predictor.pred.Model.StandingsResponse;
+import com.predictor.pred.ResponseModels.StandingsResponse;
 import com.predictor.pred.Retrofit2.RetrofitClient;
 import com.predictor.pred.Retrofit2.RetrofitService;
 import org.springframework.beans.factory.annotation.Autowired;

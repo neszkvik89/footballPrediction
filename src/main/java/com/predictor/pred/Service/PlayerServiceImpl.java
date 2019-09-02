@@ -1,6 +1,6 @@
 package com.predictor.pred.Service;
 
-import com.predictor.pred.ResponseModels.MatchResponse;
+import com.predictor.pred.Model.Player;
 import com.predictor.pred.Retrofit2.RetrofitClient;
 import com.predictor.pred.Retrofit2.RetrofitService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 @Service
-public class MatchServiceImpl implements MatchService {
+public class PlayerServiceImpl implements PlayerService {
 
   private RetrofitClient retrofitClient;
 
@@ -18,21 +18,17 @@ public class MatchServiceImpl implements MatchService {
   RetrofitService retrofitService;
 
   @Override
-  public void listTodaysMatches() {
+  public void getPlayerName(int playerId) {
     retrofitClient = retrofitService.getRetrofitClient();
-    retrofitClient.getTodaysMatches()
+    retrofitClient.getPlayerDetails(playerId)
         .enqueue(new Callback<>() {
           @Override
-          public void onResponse(Call<MatchResponse> call, Response<MatchResponse> response) {
-            for (int i = response.body().getMatches().length - 1; i >= 0; i--) {
-              System.out.println(
-                  response.body().getMatches()[i].getHomeTeam().getName() + " vs. " +
-                  response.body().getMatches()[i].getAwayTeam().getName());
-            }
+          public void onResponse(Call<Player> call, Response<Player> response) {
+            System.out.println(response.body().getName());
           }
 
           @Override
-          public void onFailure(Call<MatchResponse> call, Throwable t) {
+          public void onFailure(Call<Player> call, Throwable t) {
             t.printStackTrace();
           }
         });

@@ -1,5 +1,5 @@
 package com.predictor.pred.Service;
 
-public interface FootballPlayerService {
+public interface PlayerService {
   void getPlayerName(int playerId);
 }

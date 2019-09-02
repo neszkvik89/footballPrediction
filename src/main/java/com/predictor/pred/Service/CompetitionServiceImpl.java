@@ -1,6 +1,6 @@
 package com.predictor.pred.Service;
 
-import com.predictor.pred.Model.Player;
+import com.predictor.pred.ResponseModels.ScorersResponse;
 import com.predictor.pred.Retrofit2.RetrofitClient;
 import com.predictor.pred.Retrofit2.RetrofitService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 @Service
-public class FootballPlayerServiceImpl implements FootballPlayerService {
+public class CompetitionServiceImpl implements CompetitionService {
 
   private RetrofitClient retrofitClient;
 
@@ -18,17 +18,19 @@ public class FootballPlayerServiceImpl implements FootballPlayerService {
   RetrofitService retrofitService;
 
   @Override
-  public void getPlayerName(int playerId) {
+  public void listScorers(int leagueId) {
     retrofitClient = retrofitService.getRetrofitClient();
-    retrofitClient.getPlayerDetails(playerId)
+    retrofitClient.getScorers(leagueId)
         .enqueue(new Callback<>() {
           @Override
-          public void onResponse(Call<Player> call, Response<Player> response) {
-            System.out.println(response.body().getName());
+          public void onResponse(Call<ScorersResponse> call, Response<ScorersResponse> response) {
+            for (int i = response.body().getScorers().length - 1; i >= 0; i--) {
+              System.out.println(response.body().getScorers()[i].getPlayer().getName());
+            }
           }
 
           @Override
-          public void onFailure(Call<Player> call, Throwable t) {
+          public void onFailure(Call<ScorersResponse> call, Throwable t) {
             t.printStackTrace();
           }
         });

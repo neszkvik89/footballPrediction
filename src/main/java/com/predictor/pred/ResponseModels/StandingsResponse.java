@@ -1,5 +1,6 @@
-package com.predictor.pred.Model;
+package com.predictor.pred.ResponseModels;
 
+import com.predictor.pred.Model.Standings;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

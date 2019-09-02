@@ -1,6 +1,7 @@
 package com.predictor.pred.Controller;
 
-import com.predictor.pred.Service.FootballPlayerService;
+import com.predictor.pred.Service.CompetitionService;
+import com.predictor.pred.Service.PlayerService;
 import com.predictor.pred.Service.LeagueService;
 import com.predictor.pred.Service.MatchService;
 import com.predictor.pred.Service.TeamService;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MainController {
 
   @Autowired
-  FootballPlayerService footballPlayerService;
+  PlayerService playerService;
 
   @Autowired
   TeamService teamService;
@@ -24,9 +25,12 @@ public class MainController {
   @Autowired
   MatchService matchService;
 
+  @Autowired
+  CompetitionService competitionService;
+
   @GetMapping("/player/{playerId}")
   public void getPlayerNameById(@PathVariable (name = "playerId") int playerid) {
-    footballPlayerService.getPlayerName(playerid);
+    playerService.getPlayerName(playerid);
   }
 
   @GetMapping("/team/{teamId}")
@@ -42,6 +46,11 @@ public class MainController {
   @GetMapping("/today")
   public void listTodaysMatches() {
     matchService.listTodaysMatches();
+  }
+
+  @GetMapping("/scorers/{leagueId}")
+  public void listGoalScorers(@PathVariable (name = "leagueId") int leagueId) {
+    competitionService.listScorers(leagueId);
   }
 
 }
