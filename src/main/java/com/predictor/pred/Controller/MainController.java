@@ -6,11 +6,13 @@ import com.predictor.pred.Service.LeagueService;
 import com.predictor.pred.Service.MatchService;
 import com.predictor.pred.Service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin
 public class MainController {
 
   @Autowired
@@ -34,8 +36,8 @@ public class MainController {
   }
 
   @GetMapping("/team/{teamId}")
-  public void getTeamNameById(@PathVariable (name = "teamId") int teamId) {
-    teamService.getTeamName(teamId);
+  public String getTeamNameById(@PathVariable (name = "teamId") int teamId) {
+    return teamService.getTeamName(teamId);
   }
 
   @GetMapping("/standings/{leagueId}")

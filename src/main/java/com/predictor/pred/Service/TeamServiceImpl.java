@@ -18,13 +18,15 @@ public class TeamServiceImpl implements TeamService {
   RetrofitService retrofitService;
 
   @Override
-  public void getTeamName(int teamId) {
+  public String getTeamName(int teamId) {
+    final String[] teamName = {""};
     retrofitClient = retrofitService.getRetrofitClient();
     retrofitClient.getTeamDetails(teamId)
         .enqueue(new Callback<>() {
           @Override
           public void onResponse(Call<Team> call, Response<Team> response) {
-            System.out.println(response.body().getName());
+            teamName[0] = response.body().getName();
+            System.out.println(teamName[0]);
           }
 
           @Override
@@ -33,5 +35,6 @@ public class TeamServiceImpl implements TeamService {
           }
         });
 
+    return teamName[0];
   }
 }

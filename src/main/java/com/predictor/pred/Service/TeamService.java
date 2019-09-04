@@ -2,5 +2,5 @@ package com.predictor.pred.Service;
 
 public interface TeamService {
 
-  void getTeamName(int teamId);
+  String getTeamName(int teamId);
 }
